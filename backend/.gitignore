@@ -107,6 +107,7 @@ celerybeat.pid
 # Environments
 .env
 .venv
+<<<<<<< HEAD
 env/
 venv/
 ENV/
@@ -136,3 +137,7 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+=======
+venv/
+*.ipynb_checkpoints
+>>>>>>> 8b32275... added .wav files
