@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { DropzoneArea } from "material-ui-dropzone";
 import axios from "axios";
 
 const DropzoneAreaExample = () => {
-  const [files, setFiles] = useState([]);
-
   const headers = {
-    "content-type": "text/plain",
+    "content-type": "multipart/form-data",
   };
 
-  const handleChange = (file: any) => {
+  const fileDrop = (files: File[]) => {
+    const formData = new FormData();
+
+    const file: File = files[0];
+    formData.append("file", file);
+
     axios
-      .post("http://localhost:5000/analyze", { file: file }, { headers })
+      .post("http://localhost:5000/analyze", { formData }, { headers })
       .then((res) => console.log(res.data));
   };
 
   return (
     <div>
-      <DropzoneArea onChange={handleChange} />
+      <DropzoneArea onDrop={fileDrop} />
     </div>
   );
 };

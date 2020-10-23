@@ -13,11 +13,7 @@ def hello_world():
 
 @app.route('/analyze', methods=['GET', 'POST'])
 def analyze_data():
-    if request.method == 'GET':
-        print("hello")
-        return "hello"
-    
     if request.method == 'POST':
-        data = request.get_data()
-        print(data)
+        f = request.files['file']
+        f.save()
         return "fish"
