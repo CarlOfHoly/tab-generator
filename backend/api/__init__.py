@@ -6,10 +6,10 @@ from flask_cors import CORS
 import logging 
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger('HELLO')
+logger = logging.getLogger('INIT')
 
 UPLOAD_FOLDER='./algorithms'
-ALLOWED_EXTENSIONS = set(['txt'])
+ALLOWED_EXTENSIONS = set(['txt', 'wav'])
 
 app = flask.Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -22,14 +22,7 @@ def hello_world():
     response = flask.jsonify({'some': 'data'})
     return response
 
-@app.route('/analyze', methods=['GET', 'POST'])
-def analyze_data():
-    if request.method == 'POST':
-        f = request.files['file']
-        f.save()
-        return "fish"
-
-@app.route('/upload', methods=['Post'])
+@app.route('/upload', methods=['POST'])
 def uploadFile():
     target=os.path.join(UPLOAD_FOLDER, 'uploads')
     if not os.path.isdir(target):

@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
-import DropzoneAreaExample from "./DropeZoneAreaExample";
-import Main from "./Main";
+import FileUploader from "./FileUploader";
 
 function App() {
   return (
     <div className="App">
-      {/* <DropzoneAreaExample /> */}
-      <Main />
+      <FileUploader />
     </div>
   );
 }
