@@ -1,11 +1,14 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import DrawerComponent from "./DrawerComponent";
 
 const Header = () => {
   return (
-    <Container disableGutters>
-      <div className="title">Tab-Generator</div>
-    </Container>
+    <div className="header-container">
+      <div className="header">
+        <DrawerComponent />
+        <div className="login">login</div>
+      </div>
+    </div>
   );
 };
 

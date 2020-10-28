@@ -1,0 +1,14 @@
+.introduction {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  .title {
+    font-weight: 500;
+    font-size: 40px;
+    color: lighten($scheme-purple, 10);
+  }
+  .darker {
+    color: darken($scheme-purple, 5);
+  }
+}
