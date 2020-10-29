@@ -1,11 +1,10 @@
 import React from "react";
-import "./App.css";
-import FileUploader from "./FileUploader";
+import Frontpage from "./components/Frontpage";
 
 function App() {
   return (
     <div className="App">
-      <FileUploader />
+      <Frontpage />
     </div>
   );
 }

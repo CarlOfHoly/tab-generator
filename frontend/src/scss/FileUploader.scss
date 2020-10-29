@@ -1,0 +1,13 @@
+.file-uploader {
+  display: flex;
+  flex-direction: column;
+
+  .MuiDropzoneArea-root {
+    background: none;
+  }
+  .file-button {
+    background-color: $scheme-blue;
+    align-self: flex-end;
+    margin-top: 1rem;
+  }
+}
