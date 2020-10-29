@@ -10,6 +10,7 @@ import QueueMusic from "@material-ui/icons/QueueMusic";
 import MusicNote from "@material-ui/icons/MusicNote";
 import InboxIcon from "@material-ui/icons/Inbox";
 import MailIcon from "@material-ui/icons/Mail";
+import { Link } from "react-router-dom";
 
 const DrawerComponent = () => {
   const [drawer, setDrawer] = useState(false);
@@ -18,11 +19,27 @@ const DrawerComponent = () => {
     setDrawer(!drawer);
   };
 
+  const funLinks = [
+    <Link to="/">Home</Link>,
+    <Link to="/tabs">Tab Generator</Link>,
+    <Link to="/tuner">Tuner</Link>,
+  ];
+
+  const boringLinks = [
+    <Link to="/contact">Contact</Link>,
+    <Link to="/about">About</Link>,
+  ];
+
   const list = () => (
-    <div role="presentation" onClick={toggleDrawer} onKeyDown={toggleDrawer}>
+    <div
+      className="drawer"
+      role="presentation"
+      onClick={toggleDrawer}
+      onKeyDown={toggleDrawer}
+    >
       <List>
-        {["Tab Generator", "Tuner", "Analyzer"].map((text, index) => (
-          <ListItem button key={text}>
+        {funLinks.map((text, index) => (
+          <ListItem button key={index}>
             <ListItemIcon>
               {index % 2 === 0 ? <QueueMusic /> : <MusicNote />}
             </ListItemIcon>
@@ -32,8 +49,8 @@ const DrawerComponent = () => {
       </List>
       <Divider />
       <List>
-        {["Contact", "About"].map((text, index) => (
-          <ListItem button key={text}>
+        {boringLinks.map((text, index) => (
+          <ListItem button key={index}>
             <ListItemIcon>
               {index % 2 !== 0 ? <InboxIcon /> : <MailIcon />}
             </ListItemIcon>

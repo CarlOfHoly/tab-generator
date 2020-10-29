@@ -14,6 +14,9 @@ function App() {
           <Route path="/tuner">
             <TunerPage />
           </Route>
+          <Route path="/">
+            <div>Page under construction</div>
+          </Route>
         </Switch>
       </BrowserRouter>
     </div>
