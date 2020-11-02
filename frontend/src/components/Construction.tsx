@@ -6,7 +6,7 @@ const Construction = () => {
     <>
       <Header />
       <h1>
-        Page under construction
+        Page under construction test
       </h1>
     </>
   );

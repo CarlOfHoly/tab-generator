@@ -1,4 +1,5 @@
 import React from "react";
+import LoginPage from "./components/LogIn/LoginPage";
 import Frontpage from "./components/TabPage";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import TunerPage from "./components/TunerPage";
@@ -15,6 +16,10 @@ function App() {
           <Route path="/tuner">
             <TunerPage />
           </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+      
           <Route exact path="/">
             <Construction />
           </Route>
