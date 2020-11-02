@@ -65,7 +65,7 @@ const DrawerComponent = () => {
     <div>
       {
         <>
-          <Button onClick={toggleDrawer}>Program</Button>
+          <Button onClick={toggleDrawer}>{!drawer ? "Program" : null}</Button>
           <Drawer open={drawer} onClose={toggleDrawer}>
             {list()}
           </Drawer>

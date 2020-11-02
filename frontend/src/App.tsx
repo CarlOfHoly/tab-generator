@@ -2,6 +2,7 @@ import React from "react";
 import Frontpage from "./components/TabPage";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import TunerPage from "./components/TunerPage";
+import Construction from "./components/Construction";
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
           <Route path="/tuner">
             <TunerPage />
           </Route>
-          <Route path="/">
-            <div>Page under construction</div>
+          <Route exact path="/">
+            <Construction />
           </Route>
         </Switch>
       </BrowserRouter>
