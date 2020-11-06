@@ -1,5 +1,5 @@
 .login-page {
-  background-color: $scheme-white
+  background-color: $scheme-white;
 
   img {
     filter: invert(0.1);
@@ -47,7 +47,7 @@
     }
     input {
       filter: none;
-      background: $scheme-white;
+      background: $scheme-grey;
       border: none;
       padding: 12px 15px;
       margin: 8px 0;
@@ -100,7 +100,7 @@
 
   .overlay {
     background: $scheme-white;
-    background: linear-gradient(to right, $scheme-purple, $scheme-white)
+    background: linear-gradient(to right, $scheme-blue, lighten($scheme-blue, 10))
       no-repeat 00 / cover;
     color: #fff;
     position: relative;
