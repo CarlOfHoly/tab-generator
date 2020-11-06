@@ -138,3 +138,6 @@ dmypy.json
 cython_debug/
 venv/
 *.ipynb_checkpoints
+
+# Database
+database.db

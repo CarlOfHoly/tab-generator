@@ -1,15 +1,19 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import ThemedButton from "../ThemedButton"
 export type ISignUp = Record<string, string>;
 
 const SignUp = () => {
-  let history = useHistory();
-  const { handleSubmit, register, errors, setError } = useForm();
+  // let history = useHistory();
+  const { handleSubmit, register, errors, /* setError  */} = useForm();
 
   const onSubmit = async (values: ISignUp) => {
-    console.log("submitting")
+    fetch("http://localhost:5000/api/register", {
+      method: "post",
+      body: JSON.stringify(values)
+    }).then(res => res.json())
+      .then(data => console.log(data))
   };
 
   return (

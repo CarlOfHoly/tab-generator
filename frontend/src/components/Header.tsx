@@ -1,13 +1,21 @@
 import React from "react";
 import DrawerComponent from "./DrawerComponent";
 import { Link } from "react-router-dom";
+import {logout} from "../auth";
 
-const Header = () => {
+interface Props {
+  authenticated: Boolean
+}
+const Header:React.FC<Props> = ({authenticated}) => {
   return (
     <div className="header-container">
       <div className="header">
         <DrawerComponent />
-        <Link to="/login">Login</Link>
+
+        {
+          authenticated ? <button onClick={logout}>logout</button>: <Link to="/login">Login</Link>
+        }
+        
       </div>
     </div>
   );
