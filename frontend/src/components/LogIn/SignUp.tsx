@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import ThemedButton from "../ThemedButton"
 export type ISignUp = Record<string, string>;
 
 const SignUp = () => {
@@ -36,7 +37,7 @@ const SignUp = () => {
           })}
         />
         {errors.password && errors.password.message}
-        <button type="submit">Test</button>
+        <ThemedButton type="submit">Test</ThemedButton>
 
       </form>
     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import ThemedButton from "../ThemedButton";
 import { ISignUp } from "./SignUp";
 
 const SignIn = () => {
@@ -47,8 +48,8 @@ const SignIn = () => {
           {errors.password && errors.password.message}
 
           <a href="https://bfy.tw/PIXi">Forgot your password?</a>
+        <ThemedButton type="submit">Test</ThemedButton>
         </form>
-        <button type="submit">Test</button>
       </div>
     </div>
   );
