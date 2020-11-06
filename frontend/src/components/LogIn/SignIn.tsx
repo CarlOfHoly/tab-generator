@@ -7,7 +7,7 @@ import { login } from "../../auth"
 
 const SignIn = () => {
   const history = useHistory();
-  const { handleSubmit, register, errors, setError } = useForm();
+  const { handleSubmit, register, errors, /* setError  */} = useForm();
 
   const onSubmit = async (values: ISignUp) => {
     console.log(JSON.stringify(values));
