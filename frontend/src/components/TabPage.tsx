@@ -7,7 +7,6 @@ import Introduction from "./Introduction";
 const TabPage = () => {
   return (
     <>
-      <Header />
       <Introduction />
       <Container maxWidth="sm">
         <FileUploader />

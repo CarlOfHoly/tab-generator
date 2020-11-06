@@ -3,16 +3,27 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import ThemedButton from "../ThemedButton";
 import { ISignUp } from "./SignUp";
+import { login } from "../../auth"
 
 const SignIn = () => {
   const history = useHistory();
   const { handleSubmit, register, errors, setError } = useForm();
 
   const onSubmit = async (values: ISignUp) => {
-    console.log("submitting");
-    
-    
-  };
+    console.log(JSON.stringify(values));
+
+    fetch("http://localhost:5000/api/login", {
+      method: "post",
+      body: JSON.stringify(values)
+    }).then(res => res.json())
+      .then(token => {
+        if (token.jwt){
+          login(token);
+          history.push("/")
+      }
+        else {console.log("Incorrect user login")}
+      })
+  }
 
   return (
     <div>

@@ -4,11 +4,17 @@ import Frontpage from "./components/TabPage";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import TunerPage from "./components/TunerPage";
 import Construction from "./components/Construction";
+import {useAuth} from "./auth";
+import Header from "./components/Header";
 
-function App() {
+const App = () => {
+  const [authenticated] = useAuth();
+  console.log(authenticated);
+  
   return (
     <div className="App">
       <BrowserRouter>
+      <Header authenticated={authenticated}/>
         <Switch>
           <Route path="/tabs">
             <Frontpage />
