@@ -9,7 +9,11 @@ const SignUp = () => {
   const { handleSubmit, register, errors, setError } = useForm();
 
   const onSubmit = async (values: ISignUp) => {
-    console.log("submitting")
+    fetch("http://localhost:5000/api/register", {
+      method: "post",
+      body: JSON.stringify(values)
+    }).then(res => res.json())
+      .then(data => console.log(data))
   };
 
   return (

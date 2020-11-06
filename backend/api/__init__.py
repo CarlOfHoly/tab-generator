@@ -18,7 +18,14 @@ ALLOWED_EXTENSIONS = set(['txt', 'wav'])
 app = flask.Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = os.urandom(24)
+app.debug = True
+app.config['SECRET_KEY'] = 'top secret'
+app.config['JWT_ACCESS_LIFESPAN'] = {'hours': 24}
+app.config['JWT_REFRESH_LIFESPAN'] = {'days': 30}
 CORS(app)
+
+db = flask_sqlalchemy.SQLAlchemy()
+guard = flask_praetorian.Praetorian()
 
 
 @app.route('/', methods=['GET'])
@@ -92,6 +99,26 @@ def login():
     user = guard.authenticate(username, password)
     ret = {'jwt' : guard.encode_jwt_token(user)}
     return ret, 200
+
+@app.route('/api/register', methods=['POST'])
+def register():
+    req = flask.request.get_json(force=True)
+    username = req.get('username', None)
+    password = req.get('password', None)
+
+    if db.session.query(User).filter_by(username=username).count() > 0:
+        ret = {'error': 'username is taken'}
+        return ret, 409
+
+    db.session.add(User(
+        username = username,
+        password = guard.hash_password(password)
+        ))
+    db.session.commit()
+    ret = {"message": "sucessfully added user"}
+    return ret, 200
+
+
 
 @app.route('/api/refresh', methods=['POST'])
 def refresh():
