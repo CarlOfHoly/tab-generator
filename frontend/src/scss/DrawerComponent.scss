@@ -2,3 +2,10 @@
   color: $scheme-white !important;
   background-color: $scheme-purple !important;
 }
+
+.drawer {
+  a {
+    color: $scheme-white !important;
+    text-decoration: none;
+  }
+}

@@ -4,7 +4,7 @@ import FileUploader from "./FileUploader";
 import Header from "./Header";
 import Introduction from "./Introduction";
 
-const Frontpage = () => {
+const TabPage = () => {
   return (
     <>
       <Header />
@@ -16,4 +16,4 @@ const Frontpage = () => {
   );
 };
 
-export default Frontpage;
+export default TabPage;
