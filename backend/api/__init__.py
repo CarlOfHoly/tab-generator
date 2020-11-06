@@ -46,6 +46,13 @@ class User(db.Model):
     roles = db.Column(db.Text)
     is_active = db.Column(db.Boolean, default=True, server_default='true')
 
+    @property
+    def rolenames(self):
+        try:
+            return self.roles.split(',')
+        except Exception:
+            return []
+
     @classmethod
     def identify(cls, id):
         return cls.query.get(id)
@@ -69,10 +76,34 @@ db.init_app(app)
 
 with app.app_context():
     db.create_all()
-    if db.session.query(User).filter_by(username='Carl').count < 1:
+    if db.session.query(User).filter_by(username='carl').count() < 1:
         db.session.add(User(
             username = 'carl',
             password = guard.hash_password('carl'),
             roles = 'admin'
         ))
     db.session.commit()
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    req = flask.request.get_json(force=True)
+    username = req.get('username', None)
+    password = req.get('password', None)
+    user = guard.authenticate(username, password)
+    ret = {'jwt' : guard.encode_jwt_token(user)}
+    return ret, 200
+
+@app.route('/api/refresh', methods=['POST'])
+def refresh():
+    print("refresh requested")
+    old_token = request.det_data()
+    new_token = guard.refresh_jwt_token(old_token)
+    ret = {'jwt' : new_token}
+    return ret, 200
+
+@app.route('/api/protected')
+@flask_praetorian.auth_required 
+def protected():
+    return {message: f'protected endpoint (allowed user {flask_praetorian.current_user().username})'}
+
+
