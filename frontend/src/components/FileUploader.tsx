@@ -15,13 +15,17 @@ const FileUploader = () => {
       fetch("http://localhost:5000/upload", {
         method: "POST",
         body: formData,
-      }).then((res) => {
-        console.log(res.text);
-      });
+      }).then((res: any) => {
+        res.json()
+      }).then((data) => {
+        console.log(data);
+      })
+      
     } else {
       console.log("Please upload files");
     }
   };
+
 
   const fileDrop = (files: File[]) => {
     setFiles(files);

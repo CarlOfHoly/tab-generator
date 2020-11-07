@@ -21,6 +21,6 @@ def strikes_and_notes(path):
     
         if ~np.isnan(f0_est):
             played_notes.append(f0_est)
-            played_times.append(librosa.samples_to_time(strikes, sr=fs))
+            played_times.append(librosa.samples_to_time(strikes[i][i], sr=fs))
         
     return played_times, played_notes

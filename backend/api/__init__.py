@@ -1,9 +1,12 @@
 import os
+import json
 import flask
 from flask import Flask, flash, request, redirect, url_for, session
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import logging 
+
+from algorithms.uploads.algorithm_funcs import strikes_and_notes
 
 import flask_sqlalchemy
 import flask_praetorian
@@ -43,8 +46,12 @@ def uploadFile():
     filename = secure_filename(file.filename)
     destination="/".join([target, filename])
     file.save(destination)
-    session['uploadFilePath']=destination
-    return "Successfully uploaded file"
+
+    times, notes =strikes_and_notes("AD.wav")
+
+    ret = {'message' : 'data'}
+    print(ret)
+    return ret, 200
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
